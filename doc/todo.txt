@@ -1,0 +1,139 @@
+(TODO)
+  - update java app stub
+  - add to button context: copy, select parent
+  - bug: change flag not set on special paste (icon)
+  - file save now having problems on Jaguar as well as some Windows
+  - lock an object (frame)
+  - frame grouping messes up z-ordering
+  - macro group as template (drawn first always)
+  - select which keys for 'custom' mode
+  - add a transparency color for buttons/frames.
+  - panel close order not same as open order (with ctrl-w on windows)
+  - macro simulation through ALT-SHIFT-CLICK broken? (harris)
+  - timers (still) broken?
+  - in alias, jump windows have 'add' button to add without dismiss
+  - window saves still fail periodically
+  - add 'registration' option
+  - add '-x' transparency option for themes
+  - add @key support for button-id/frame-name to have themes/tabs get along
+  - paste icons not undoable
+  - better hard button handling (visual/emuation rather than tabs)
+  - firmware image replacement
+  - faster/less-clicking for IR learning
+  - non-modal property editor/palette
+  - drag/drop w/out cut/paste
+  - distribute objects horizontal/vertical
+  - support cut/copy for multiple selections
+  - monitor background update progress
+  - more granular tasks (upload/download)
+  - deskpanel focus, tree selection for panels, etc
+  - open to tree node when re-adding panel (if was open)
+  - check linux rpm w/ jre's (paths)
+  - used pronto font or use font size in context menus? what about main menu?
+  - fix compressed color images
+  - replace refreshPanel with repaintPanel in many cases
+  - add zoom to view menu
+  - property editing for multiple selections
+  - 'revert to defaults', 'set defaults' for all preferences tabs
+  - backup database on save .. backup use common code + numbered backups .. pref for off
+  - better 'dirtied' detection for ccf + ir database
+  - copy/paste special uses pieces/alias from button on clipboard? (spee)
+  - cut/delete should advance like <tab> or select parent
+  - fix ctrl-click cloning. only after move. new child @ old depth.
+  - show ccf mem usage against available mem on status line
+  - proxy support for http updating?
+  - switch menus to jmenus using apple osx property hack
+  - internationalization, resource bundles
+  - finish TLabel, replace JLabel, JButton w/ custom impl.
+  - detect image type by snooping file instead of file filter?
+  - restrict naming left/right keys in macro devices?
+  - have beeps audible as real beeps (fabricate au file?)
+  - add FAQ about debugging, undeading, flashing firmware
+  - remove dependence on cygwin or get new dll? broken for win98?
+  - be able to close all tabs. start with no tabs open?
+  - preference to turn of ir auto-clean?
+  - hide home device list?
+  - auto macro builder
+
+(CONFIRM)
+  - aaron'ss 9200 jumps not working in emulator (last jump)
+  - revert menu disabled on some platforms? 98SE/ME?
+  - can't use web-safe color index for button/frame on 9200? Aaron. ok on 6k.
+  - CTRL+arrow doesn't work on Win/Mac?
+  - new paint model (selection last) might slow things down
+
+(PREFERENCES)
+  - auto-save every x minutes
+
+(BUGS)
+  - paste button has drag selection as item in previous ccf. movement bug.
+  - sometimes grid/snap toggle menus/tool out of sync w/ no panels selected
+  - FIX: ir sending/testing (cole)
+  - FIX: record 0100, 7000
+  - FIX: 'dispose called when dialog not visible'
+  - hitting esc in icon library passes through to button props
+  - parent frame boundary occluded by child element
+  - spurious undead crash (cancelling it? when done?) that hoses VM & Windows.
+  - IR Database doesn't use tonto font
+  - fix panel zooming
+  - TEST: MoveTo that preserves links
+  - resolve lineage for buttons,frames. child of ccfchild or it's parent.
+  - pasted action lists should be culled of references to other CCF's
+
+(REFACTOR)
+  - move all static utility methods unti a Util class
+  - redo ALL ccf structures as tree of hashmapstables using an external schema
+  - use different fields for api than for serialization (all vectors for lists)
+  - store colors after decode as CCFColor ... convert to int upon encode
+  - redo encode/decode + error handling
+  - merge/split CCFIRCode and irdb/Pronto code sensibly
+  - ui mapping for ccf elements. add change notifiers.
+  - streamline ir recording for groups of buttons/remotes. cleaner UI.
+  - error reporting for exceptions during encode/decode. need test cases.
+  - timers limited to button presses by UI, but maybe don't have to be
+  - all debugging should go through debug listeners
+  - rewrite tree from scratch then subclass: drag, drop, reorder
+  - rewrite CCFPanel renderer from scratch
+  - the whole buildtree thing sucks
+  - merge updateCCFInfo && updateMenuState?
+  - redo ir database
+
+(UNRESOLVED)
+  - installer refuses to accept install location (paul caden)
+  - network update fails (spee - japanese locale)
+  - tabs too narrow for full filename? until next load event.
+
+(DOCS)
+  - docs on ir encodings: pulse position (0100) , rc5/6x encoding (5/6000), 7/9000
+  - basic howto: getting started
+  - tips and tricks: keys, menus, action lists, ir panels
+  - troubleshooting guide (comm, etc)
+
+(IR)
+  - enable sending/testing of ir codes
+  - handle 5000,6000,7000 and 0100 styles in record
+  - xmodem xfer is using ccf file size?
+  - cancel ir recording doesn't. should close comm.
+  - enable 'delete' key in db
+  - analysis of ir groups: active bit/change list
+  - add "active bitmap" and "true value" to IRBurstCode.
+  - move remote cleanup() into IRRemote and add index averaging
+  - add index collapse/cull for similar elements
+  - TEST: ir recording
+
+(IRDB)
+  - check that saved before closing!
+  - database should not be modal frame
+  - not tied to Tonto instance
+  - CCF Import should present load dialog instead or load from all ccf's
+  - networked
+
+(MAC)
+  - make sure name is highlighted in name dialog on open (seems to be a mac bug)
+  - option-command-w to close all panels
+
+(JAVA BUGS)
+  - filename filters not working in old-style dialogs (java bug when chg dir)
+  - file dialog disables save when descending to child dir
+  - osx eats cut/copy/paste events when menu accelerator exists
+

@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist SYSTEM "file://localhost/System/Library/DTDs/PropertyList.dtd">
+<plist version="0.9">
+<dict>
+	<key>CFBundleIconFile</key>
+	<string>Tonto.icns</string>
+	<key>CFBundlePackageType</key>
+	<string>APPL</string>
+	<key>CFBundleName</key>
+	<string>Tonto</string>
+	<key>CFBundleSignature</key>
+	<string>TNTO</string>
+	<key>CFBundleExecutable</key>
+	<string>JavaApplicationStub</string>
+	<key>CFBundleDevelopmentRegion</key>
+	<string>English</string>
+	<key>CFBundleVersion</key>
+	<string>1.44</string>
+	<key>CFBundleInfoDictionaryVersion</key>
+	<string>6.0</string>
+	<key>CFBundleDocumentTypes</key>
+	<array>
+		<dict>
+			<key>CFBundleTypeExtensions</key>
+			<array>
+				<string>ccf</string>
+				<string>CCF</string>
+			</array>
+			<key>CFBundleTypeIconFile</key>
+			<string>CCF.icns</string>
+			<key>CFBundleTypeName</key>
+			<string>CCF File</string>
+			<key>CFBundleTypeOSTypes</key>
+			<array>
+				<string>CCF </string>
+			</array>
+			<key>CFBundleTypeRole</key>
+			<string>None</string>
+			<key>LSIsAppleDefaultForType</key>
+			<true/>
+		</dict>
+		<dict>
+			<key>CFBundleTypeExtensions</key>
+			<array>
+				<string>zcf</string>
+				<string>ZCF</string>
+			</array>
+			<key>CFBundleTypeIconFile</key>
+			<string>ZCF.icns</string>
+			<key>CFBundleTypeName</key>
+			<string>ZCF File</string>
+			<key>CFBundleTypeOSTypes</key>
+			<array>
+				<string>ZCF </string>
+			</array>
+			<key>CFBundleTypeRole</key>
+			<string>None</string>
+			<key>LSIsAppleDefaultForType</key>
+			<true/>
+		</dict>
+	</array>
+	<key>NSHumanReadableCopyright</key>
+	<string>Copyright (c) 2001-2002 Stewart Allen</string>
+	<key>VMOptions</key>
+	<string>-Xms64M -Xmx256M</string>
+	<key>Java</key>
+	<dict>
+		<key>MainClass</key>
+		<string>Boot</string>
+		<key>JVMVersion</key>
+		<string>1.4+</string>
+		<key>ClassPath</key>
+		<array>
+			<string>$JAVAROOT/boot.jar</string>
+		</array>
+	</dict>
+</dict>
+</plist>

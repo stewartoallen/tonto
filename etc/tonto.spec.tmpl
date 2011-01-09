@@ -1,0 +1,69 @@
+Summary: A Pronto remote control developer tool
+Name: tonto
+Version: @version@
+Release: 1
+Copyright: Artistic
+Provides: libhpi.so libjvm.so libjava.so
+Group: Development/Tools
+Source: /home/stewart/devel/tonto/tmp/dist/tonto-%{version}.tar.gz
+BuildRoot: /var/tmp/%{name}-buildroot
+
+%define _topdir /home/stewart/rpms
+
+%description
+Tonto is a developer-oriented companion to the popular Pronto  programmable remotes made by Philips. Pronto remotes already ship with a Windows-only developer tool called ProntoEdit (or ProntoProEdit on newer models). I really wanted an environment I could use on Mac or Linux. But more importantly, Pronto*Edit is not user-extensible and lacks some of the sophisticated developer capabilities that I craved. Tonto is my response.
+
+It is the goal of this project to develop not just a better editor, but to also provide a rich, extensible platform for progamming the Pronto family of remotes. Planned features include a complete CCF developer's API, Module support for user-extensions to the Tonto user interface, online access to a database of IR codes and expert IR analysis tools for the creation of clean codes and discovery of discrete codes.
+
+%prep
+rm -rf tonto-%{version}
+mkdir tonto-%{version}
+tar zcf $RPM_SOURCE_DIR/tonto-%{version}.tar.gz tonto-%{version}
+
+%setup -q
+
+%build
+
+%install
+mkdir -p %{buildroot}/usr/share/
+mkdir -p %{buildroot}/usr/local/bin/
+tar zxf \
+	~/devel/tonto/tmp/dist/tonto-%{version}.tar.gz \
+	-C %{buildroot}/usr/share/ \
+	--exclude tonto/bin/sample.bat \
+	--exclude tonto/bin/jnijcomm.dll \
+	--exclude tonto/bin/cygwin1.dll \
+	--exclude tonto/lib/libjnijcomm.jnilib
+cp %{buildroot}/usr/share/tonto/bin/tonto.sh %{buildroot}/usr/local/bin/tonto
+chmod 755 %{buildroot}/usr/local/bin/tonto
+
+%clean
+#rm $RPM_SOURCE_DIR/tonto-%{version}.tar.gz
+rm -rf %{buildroot}
+
+%pre
+jdk=`which java`
+if [ "$jdk" = "" ]
+then
+	echo "*********************************************"
+	echo ""
+	echo ""
+	echo " You must have the IBM Java2 VM in your path"
+	echo "             for Tonto to run"
+	echo ""
+	echo ""
+	echo "*********************************************"
+fi
+%post
+
+%preun
+
+%postun
+
+%files
+%defattr(-,root,root)
+/usr/local/bin/tonto
+/usr/share/tonto/
+
+%changelog
+

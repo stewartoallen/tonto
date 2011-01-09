@@ -1,0 +1,490 @@
+1.45 (August ??, 2003)
+    - added 'i' shortcut for learning ir codes on a button
+    - added 'F3' shortcut to alias the clipboard to a selected button
+	- fixed a sporadic lockup bug when closing a serial port during download
+
+1.44 (August 21, 2003)
+    - fixed bug where new non-marantz ccf's were given scroll devices
+    - fixed bug with key names in action aliases
+    - fixed a couple of null pointer bugs in theme mastering
+    - fixed a bug in the ccfporter (zcf) that prevented proper reimportation
+    - added support for text alignment and multi-line in custom mode
+
+1.43 (March 14, 2003)
+    - removed abitrary icon size limitations
+    - fixed various icon bugs introduced mysteriously in 1.42
+    - fixed frame size auto-correction from API when icon present
+    - added transparency for frames/buttons in 'custom' mode
+    - added three template panels for 'custom' mode
+    - added intrepretation of RC5 codes and encoding in the IR Database
+    - prevent performing an undead operation with an empty ccf
+
+1.42 (February 18, 2003)
+    - fixed font support under IBM's 1.4 JVM for Linux
+    - preliminary support for EggStream CCFs
+    - added support for custom ccf type with user-defined panel sizes
+    - added support for 32-bit alpha images
+    - added support for PNG image imports
+    - displays name of changed ccf in 'ccf changed' save dialog
+
+1.41 (December 10, 2002)
+    - added support for Rav2k
+    - added appendAction to CCFHardKey
+    - fixed timer corruption when missing start or end action
+
+1.40 (November 2, 2002)
+    - fixed a bug with device attributes in some Marantz CCF's
+    - fixed several bugs in the public CCF API (thanks mike)
+    - changed upload behavior to retry on a 'no data' error
+    - added better upload initialization for timeouts due to large CCF's
+    - added better download initialization for color remotes that timeout
+
+1.39 (October 1, 2002)
+    - added support for device 'needs programming' flag
+    - fixed multiple object move/resize using object bar
+    - fixed null pointer during save caused by ir code copy in action lists
+    - fixed version calculation code for firmware updates
+    - fixed multiple-jump type auto-conversion for marantz CCF's
+    - fixed alias creation that would lead to recursive loops
+    - changed paint selection default to the less problematic/faster method
+
+1.38 (September 8, 2002)
+    - default flashing firmware to update current segments
+    - fixed rf extender attributes for Marantz remotes
+    - fixed null pointer bug when ungrouping
+    - fixed icon lib and codecs to handle anomalous situation with null frames
+    - changed firmware segment updater to use more paranoid xmit verification
+
+1.37 (September 4, 2002)
+    - fixed 0100 encoding bug when using expert mode
+    - fixed potential bug that would 'lose' edited IR codes
+    - removed scroll wrapper for work area (not functional)
+    - removed verbose debugging messages left from 1.36 work
+
+1.36 (September 2, 2002)
+    - disabled action list culling during decode and deletes
+    - fixed multi-jump action list types for marantz
+    - added theme 'mastering' and tutorial
+
+1.35 (August 31, 2002)
+    - added global icon replace when pasting button icons sets
+    - added preference to control paint selection order (for speed)
+    - added timer support to ZCF importer/exporter
+    - added support for loading multiple icons simultaneously (new dialogs)
+    - disabled rounding during signal cleanup
+    - fixed font availability for ProntoPro and Marantz x200's
+    - fixed expert handling of 0100 codes
+    - fixed race condition during network updating
+    - fixed numerous bugs in the ZCF importer/exporter (Aaron)
+    - fixed null pointer exception in showDeskPanel
+    - fixed null attribute bug in the XML parser
+
+1.34 (August 30, 2002)
+    - added tab 'mastering' from special template panels
+    - added tab mastering tutorial
+    - added tutorial link to menus
+
+1.33 (August 28, 2002)
+    - preserve object location during paste
+    - preserve relative location of frame contents during resize
+    - added preference to enable/disable web-safe colors
+    - added ability to hide selection border (H or CTRL-H)
+    - added button on button paste selection dialog (try it)
+    - added tree auto-scroll when dragging panels/devices
+    - fixed object status bar bug with undo/redo
+
+1.32 (August 26, 2002)
+    - fixed device right-click sub-menu generation
+    - fixed selection to paint last (on top)
+    - fixed two null pointer exceptions when deleting nested frames
+    - added CTRL+arrows for top/left resizing
+    - added support for Onkyo Chad USR5 (Christophe Labouisse)
+
+1.31 (August 20, 2002)
+    - fixed null pointer when opening system macro panel
+    - fixed widget caching bug that affected pasting between ccf's
+    - added pasting to panels via tree selection
+    - added try/catch around mac specific setup
+    - prevent dragging panels onto system macro panel
+
+1.30 (August 15, 2002)
+    - fixed 5000(i) emulator bug
+    - fixed app helper execution on osx
+    - fixed image cache bug for buttons and frames
+    - added preferences for grid tick color
+    - added better comm abstraction in case I find a better implementation
+    - block loading of icons that are 'too large'
+    - prevent attempted deletions of system macro panel
+    - object bar now spans the width of the main window
+
+1.29 (August 11, 2002)
+    - added transparency menu item. deprecated 's'. now CTRL-SHIFT-T.
+    - added 'replace' button to global icon replace module
+    - fixed offset bug for transparency with nested buttons/frames
+    - fixed 'edit' update in action lists
+    - fixed transparency under osx
+    - fixed jump type with new marantz to allow multi-jump editing
+    - fixed 5200 encoding issue that caused download/emulator to fail (drhb)
+    - saveAs prefills filename with current filename
+
+1.28 (August 10, 2002)
+    - show device name in panel title
+    - added icon transparency ('x' key on button or frame)
+    - added 'Apply' buttons to button/frame property dialogs
+    - added 'view' menu
+    - fixed bug with frame/icon transparency creator
+    - fixed preservation of tree expansion when reordering nodes
+    - now preserving properties dialog locations as well as size
+    - made object panel changes apply to multiselect and undoable
+    - prevent click-selection from generating undo/redo events
+
+1.27 (August 8, 2002)
+    - improved downloading and firmware flashing under Win98
+    - possible fix for color ccf's without timers (rc "id 7" bug msg)
+    - added frame image grabber ('S' key)
+    - fixed an initialization bug in 'undead remote'
+
+1.26 (August 7, 2002)
+    - fixed autoload menu bug
+    - fixed initial size of alias/jump dialogs
+    - fixed focus issues with editing button/frame properties
+    - fixed dialog "super" sizing with too-large icons. really. honestly.
+    - added support for "factory ccf" flag
+    - added recognition when uploading compressed ccf to correct progress bar
+    - added revert to previous saved version
+    - added firmware updating for the brave of heart
+    - moved inactive icons to separate tab (who uses these anyway?)
+
+1.25 (August 5, 2002)
+    - fixed copy/paste of frames and buttons without icons
+    - fixed nulling of frame/button icons
+    - fixed dialog sizes for a second time. hope it sticks.
+    - fixed undead again (broken during last comm update)
+    - made upload and download algorithms *more* reliable by violating spec
+
+1.24 (August 4, 2002)
+    - fixed parent link errors when copying between ccf tabs
+    - fixed autoload bug introduced in 1.23
+    - added tree dragging of panels to closed devices
+    - added tree dragging of devices to closed device lists
+    - patch for download command failure that appears to work
+    - replaced jump combo box with scrolling list
+    - prevent dialogs from exceeding the screen size
+
+1.23 (August 4, 2002)
+    - replaced action jump combobox with a much nicer list
+    - added window memory for more dialogs
+    - added page/home/end key bindings for object z-ordering
+    - added grid minor ticks
+    - fixed null ptr when adding/re-editing empty ir action
+    - fixed grid/snap buttons active when no panel selected/visible
+    - fixed windows save bug ... finally ... for real!
+    - prevent setting default dialog size too small to fit components
+    - new tabs now appear after currently selected tab
+    - all open and upload commands now create a new tab
+
+1.22 (August 3, 2002)
+    - made green tint dynamic instead of requiring restart
+    - fixed object status update after editing preferences
+    - fixed loading of icons into library for device icons
+    - added group/ungroup to button and frame context menus
+    - added grid/snap selection from tree panels
+    - added support for an emulator for each model
+    - added copying/pasting of action lists from/to device keys
+    - added cut/copy/paste/select buttons to action lists
+    - added toolbar icon launcher for external ccf editor
+    - prevent opening the same file multiple times without notification
+    - preserve last selected alias to speed repeat aliasing
+    - increased max number of displayable aliases in dropdown
+
+1.21 (August 1, 2002)
+    - fixed undo/redo when adding a new device
+    - fixed new-with-type failing to update panel size
+    - fixed icon library list selection freeze bug
+    - fixed frame resize bug when icon changed
+    - fixed null pointer when adding jump with no selection
+    - fixed some npe bugs in zip/xml importer/exporter
+    - added green tint simulation for grayscale remotes
+    - added right-click menu to some text fields
+    - added much more defensive code for file-saves. guard against 0-len.
+    - added command-listener for running sessions (simulate OLE)
+    - disable disabling of network updates during transient failures
+    - disable adding multiple jumps on non-marantz ccf-formats
+    - changed file-new/upload to create new windows by default
+    - changed default new button font and icon
+    - switched to distributing Sun's 1.4 JRE with the Windows EXE
+
+1.20 (July 27, 2002)
+    - added control over icon compression in Icon Library
+    - added validation of ccf size to remote model before download
+    - added saving of window sizes for properties, icon dialogs
+    - added grid snap gravitation control: top left, top right, etc.
+    - added revert-to menu to allow switching to a previous version of tonto
+    - added undo/redo for add/delete/cut/copy (experimental)
+    - added application font size as a preference
+    - fixed icon library state bug with newly loaded files
+    - fixed color conversion "closeness" bug
+    - fixed new-with-type icon lib bug not pickup up color
+    - fixed undead which was broken in 1.19
+    - fixed icon library 'edit' key editing wrong image
+    - fixed file bug on windows where size was not reset to 0
+    - optimized image production to consume less memory
+    - optimized panel refresh to consume less memory & preserve selection
+    - several improvements to action list editor: cut/copy/paste/delete
+
+1.19 (July 23, 2002)
+    - fixed various tab transition bugs
+    - fixed icon library load bug
+    - fixed paste color conversion (or lack thereof) bug
+    - fixed menus enabled/disabled when appropriate
+    - fixed quit bug failing to save preferences
+    - fixed endemic flaws in the conversion, editing and learning of ir
+    - fixed preservation of last working and image dirs
+    - fixed preservation prefered size for preferences dialog
+    - added startup delay for network updates (conflicts w/ autoload)
+    - added multi-select for object alignment, drag and grouping by frame
+    - added select parent and first child for tree traversal
+    - added Ctrl-A select-all
+    - added a toolbar
+
+1.18 (July 20, 2002)
+    - fixed panel display bug when device properties in tree
+    - fixed ir conversion/corruption bug
+    - fixed shared-state bug with multiple windows and object properties
+    - fixed url to file conversion bug on Windows preventing updates
+    - fixed icon conversion for buttons with cached images
+    - fixed frame properties dialog 'ok' bug
+    - fixed tab focus traversal of objects in panels
+    - added preference to enable ir auto-conversion (off by default)
+    - added hack to workaround window bounds changing between restarts
+    - added preference for default snap/show grid when panel first shown
+    - added hook for using an external pronto emulator and editor
+    - added checks to prevent object from moving outside panel bounds
+    - added font controls on lower object display panel
+    - added tabbed interface for MDI instead of multiple windows
+
+1.17 (July 17, 2002)
+    - added preference to show device properties in tree
+    - added tonto network updates. turn on in prefs.
+    - added native mac osx handlers for about and preference menus
+    - added several preferences for comm port scanning
+    - fixed null pointer exception when copying an empty device (paul)
+    - fixed grid range bug (paul)
+    - fixed right-click grid snap alignment bug (lyndel)
+    - fixed undo/redo for key-based move/resize
+    - fixed object selection no-movement rebound bug
+    - fixed serious ir conversion bug
+    - a very large amount of code cleanup. more to come
+
+1.16 (July 15, 2002)
+    - added 'Object' menu with ordering controls
+    - added support for 'timer group' flag on devices
+    - added page up/down to cycle device tabs
+    - added easy button actions with 'copy/paste alias' menus (edit & device)
+    - added global icon search/replace
+    - fixed memory settings bug in linux rpm
+    - woraround bug with tab key bindings in dialogs: ALT-SHIFT-# for > 10
+    - restrict use of device flags to appropriate devices
+    - now saving/restoring previous size of tree window
+    - changed 'Load' to 'Open' under the File menu
+    - changed default Windows VM to IBM (larger d-load)
+    - increased default Windows VM memory settings
+    - upgraded InstallAnywhere. might solve a couple of Windows issues.
+
+1.15 (July 13, 2002)
+    - fix load bug where changed images are not registered
+    - fix copying of action lists between buttons
+    - added zip/xml import/export archive format (zcf) support (no timers)
+
+1.14 (July 10, 2002)
+    - added preference to emit IR or not during button tests
+    - added support for device action lists during button tests
+    - added multiple document editing. highly experimental!
+    - added ability to copy device hard keys (right-click device)
+    - added CTRL-T to re-tile all desktop panels
+    - added CTRL-SHIFT-W to close all windows
+    - added file-autoloading for galleries, works-in-progress, etc.
+    - cranked up memory requirements to 64-128Mb
+
+1.13 (July 9, 2002)
+    - fix null pointer exception with special jump codes in fixDevicePointer
+    - fix file append bug where copies of ccf are appended to itself
+    - change ALT-click to ALT-SHIFT-click to avoid platform conflicts
+
+1.12 (July 9, 2002)
+    - added key shortcuts for device property tabs and action buttons
+    - enabled jump forward/back options for older marantz models
+    - enabled scroll up/down devices for older marantz models
+    - fixed convert menu bug which erroneously called file->new
+    - fixed header bug for old-style ccf (gray-notimers) affecting rc5xxx
+    - fixed panel drag/drop/cut/paste between devices - now keeps links valid
+    - ALT-click now simulates delays and ir transmits as well as panel jumps
+
+1.11 (July 7, 2002)
+    - fixed month date bug (off by one)
+    - fixed button display name bug in action lists
+
+1.10 (July 3, 2002)
+    - added support for pronto RF channel ids and extenders
+    - added support for special jump modes in pro and marantz
+    - added auto icon & color conversion when merging unlike ccfs
+    - added new utilities menu: raw upload/download and email logs
+    - added <F2> object renaming
+    - added new Mac OSX icon
+    - added ccf documentation to Docs area of web site
+    - added serialized port scan on mac to workaround 10.1.4 system bug
+    - added workaround preference for broken save dialog in Java 1.3
+    - added workaround for OSX JTextArea copy/paste bug
+    - added support for compressed ccf files
+    - added support for loading Windows BMP images
+    - added ccf type conversion menu and type preference controls
+    - added ability to edit user new-macro panel
+    - added support for new Marantz x200 jump command
+    - added culling of dead/unsupported actions
+    --added preferences to control the colors for automatic color mappings
+    --added undo/redo for move and resize actions
+    --added ability to edit images in the library with external editor
+    - added ability to edit device icons
+    - added debug log window under help menu
+    - changed progress dialogs to prevent nesting
+    - enabled delete key in action list and added clear button
+    - fix right-click for n-button mouse on osx
+    - fix menu accelerators for jdk 1.4.0
+    - fix linux jni library for jdk 1.4.0
+    - fix ir learned code auto-conversion bug
+    - fix Marantz x200 bug that caused 'invalid configuration' issues
+    - fix double ir code conversion for non-udb remotes
+    - fix icon conversion from gray to color
+    - fix color icon generation bug w/ unaligned sizes
+    - fix device cloning bug affecting Marantz x200
+    - mask header attributes to filter random upload corruption
+    - new buttons now have a default icon
+    - undead pronto is now under the utilities menu
+    --prevent probing of "modem" serial ports under OSX
+
+1.09 (April 13, 2002)
+    - fixed device structure to accomodate newer marantz models
+    - rewrote hard key handling code to accomodate any new models
+
+1.08 (February 10, 2002)
+    - add new splash screen courtesy of Raul Silva. thanks Raul!
+    - fixes bug in CCFDevice.setActionList(). thanks Pavel!
+
+1.07 (February 4, 2002)
+    - fix ir encoding bug during v1/v2 auto-convert
+    - fix color export/re-import bug with grayscale images
+    - shortened pronto scan delays caused by faulty test code
+
+1.06 (January 10, 2002)
+    - changed comm to use same break signal as ProntoEdit
+    - fixed datestamping of ccf when changed
+    - fixed bug that blocked timers, beeps and delays from executing
+
+1.05 (January 8, 2002)
+    - enabled saving of icons from library
+    - fixed image import bug
+
+1.04 (January 4, 2002)
+    - fixed "Undead Pronto" boot code detection for ProntoPro
+    - fixed null pointer error in "Undead Pronto"
+    - fixed null pointer errors while encoding corrupted CCF's
+
+1.03 (January 4, 2002)
+    - added command-line load utility to CCFWalker
+
+1.02 (January 4, 2002)
+    - added verbose logging to files in tonto prefs dir
+
+1.01 (January 3, 2002)
+    - added new load timeout preference
+    - extended comm timeout window ranges
+
+1.00 (January 1, 2002)
+    - added Windows EXE installer with JRE
+    - added additional timeouts, retries and preferences for comm layer
+
+0.99 (December 19, 2001)
+    - re-fixed the icon corruption bug
+    - added new font glyph renderer for panels to work around JVM bugs
+    - added ALT-click on a button to open it's Jump Panel
+    - added option to use pronto font in tree (cosmetic for Sun JVM)
+    - fixed udb/rcx code corruption during re-save
+    - fixed 0.98 bug which rendered null fonts as size 8
+
+0.98 (December 8, 2001)
+    - fixed bug with older ccf formats
+    - fixed lineage of info and error dialogs to make them clickable on Mac
+    - fixed ccf merge error
+    - fixed panel delete/cut/paste bug
+    - added auto-convert of ir codes to account for udb/no-udb
+    - fixed some ui usability bugs (selections, field focus)
+    - fixed several grid snap resize bugs
+    - added tree drag-drop reordering of panels and devices
+    - added recent file menu
+    - added font offset tables and preference option
+    - added panel size preference
+
+0.97 (November 21, 2001)
+    - fixed compressed icon byte alignment bug
+    - Mac OS X: turned on hardware graphics acceleration by default
+    - added communications timings preferences for experimentation
+    - added linux RPM
+
+0.96 (November 19, 2001)
+    - tweaked download protocol. added more debug info.
+    - fixed button crop bug when changing backing icon
+    - fixed panel, frame and action/list clone bugs
+    - fixed a swarming horde of cut/copy/paste bugs
+    - remembers pronto port and uses when 'undeading' pronto
+    - fixed arrow-key button placement
+    - reworked dialog code to workaround mac jvm bugs
+    - now defaulting to uncompressed icons b/c potential 1000 incompatability
+    - fixed tree/button selection-delete error
+
+0.95 (November 14, 2001)
+    - fixed name entry dialog bug introduced in 0.94
+    - fixed "locate pronto" dialog bug introduced in 0.94
+    - added quotes in startup scripts to allow paths with spaces
+    - fixed some encoding/decoding bugs which buried errors
+    - added preferences panel
+    - fixed button action list cloning
+    - fixed bug that prevented signals without repeat segments
+    - fixed bug that stripped IR code names
+    - added code that attempts to load corrupted ccf's anyway
+    - fixed unix/windows startup scripts
+
+0.94 (November 13, 2001)
+    - fixed tsu1000 ccf compatability bug
+    - added ability to create ir panels from database
+    - added geometry controls in properties dialogs
+    - added ability to edit ir codes and key names
+    - developer api changes. your apps may break. sorry!
+    - fixed incorrect behaviour adding/removing tree elements
+    - completed copy/paste for panels and devices
+    - now defaulting to own comm library for linux
+
+0.93 (November 11, 2001)
+    - fixed ir display bug introduced in 0.92
+    - added better copy/paste for buttons
+    - added ctrl+drag to copy a button
+    - added keyboard shortcuts for raise/lower/top/bottom
+    - added culling of dead/unused objects
+
+0.92 (November 10, 2001)
+    - significantly improved the ir database functionality.
+
+0.91 (November 8, 2001)
+    - more ir database work.
+
+0.89 (November 7, 2001)
+    - patch to support truncated type1 icons
+    - added first cut of ir database
+
+0.88 (November 6, 2001)
+    - fixed 'missing parent' bug introduced in 0.87
+    - added more color support and bug fixes
+
+0.87 (November 5, 2001)
+    - fixed 'missing' buttons with negative offsets
+    - preliminary color support
+

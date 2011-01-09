@@ -1,0 +1,20 @@
+Summary: A Pronto remote control developer tool
+Name: tonto
+Version: @version@
+Release: 1
+Copyright: Artistic
+Group: Development/Tools
+BuildRoot: @dir@
+AutoReqProv: no
+Prefix: /
+%undefine __check_files
+%define _topdir /home/stewart/rpms
+%define _rpmdir /tmp
+%define _builddir /tmp
+%description
+Tonto is a developer-oriented companion to the popular Pronto  programmable remotes made by Philips. Pronto remotes already ship with a Windows-only developer tool called ProntoEdit (or ProntoProEdit on newer models). I really wanted an environment I could use on Mac or Linux. But more importantly, Pronto*Edit is not user-extensible and lacks some of the sophisticated developer capabilities that I craved. Tonto is my response.
+
+It is the goal of this project to develop not just a better editor, but to also provide a rich, extensible platform for progamming the Pronto family of remotes. Planned features include a complete CCF developer's API, Module support for user-extensions to the Tonto user interface, online access to a database of IR codes and expert IR analysis tools for the creation of clean codes and discovery of discrete codes.
+%files
+%defattr(-,root,root)
+/

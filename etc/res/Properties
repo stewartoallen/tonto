@@ -1,0 +1,2 @@
+main.class=Tonto
+jar.depends=jcore,jcomm,irdb
