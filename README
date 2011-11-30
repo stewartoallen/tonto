@@ -1,4 +1,1 @@
-build:
-
-ant
-
+type 'ant' to build
