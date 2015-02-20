@@ -1,0 +1,5 @@
+jars
+javadoc
+*.so
+*.log
+*.patch
