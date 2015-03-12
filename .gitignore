@@ -3,3 +3,5 @@ javadoc
 *.so
 *.log
 *.patch
+*.class
+*.jar
