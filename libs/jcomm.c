@@ -7,12 +7,14 @@
  * of the License, or (at your option) any later version.
  */
 
+#include <errno.h>
+#include <string.h>
+
 #include <jcomm.h>
 #include <jcomm_DriverGenUnix.h>
 #include <jcomm_DriverGenUnix_Serial.h>
 #include <jcomm_DriverGenUnix_Parallel.h>
 
-extern int errno;
 
 // ---( utility functions )------------------------------------------
 void throwMyException(JNIEnv *env, const char *ex, const char *msg)
@@ -20,10 +22,10 @@ void throwMyException(JNIEnv *env, const char *ex, const char *msg)
 	(*env)->ThrowNew(env, (*env)->FindClass(env, ex), msg);
 }
 
-void log(char *str)
-{
-	printf(">> %s\n", str);
-}
+//void log(char *str)
+//{
+//	printf(">> %s\n", str);
+//}
 
 // ---( javax.comm.DriverGenUnix native functions )------------------
 
@@ -55,7 +57,7 @@ JNIEXPORT jint JNICALL Java_javax_comm_DriverGenUnix_available
 	int result;
 	if (ioctl(fd, FIONREAD, &result))
 	{
-		throwMyException(env, "java/io/IOException", (char*)strerror(errno));
+		throwMyException(env, "java/io/IOException", (const char*)strerror(errno));
 		return -1;
 	}
 	return (jint)result;
@@ -71,7 +73,7 @@ JNIEXPORT jint JNICALL Java_javax_comm_DriverGenUnix_read
 	struct timeval sleep;
 	struct timeval *psleep = &sleep;
 	int numRead, rv, try = 0;
-	char *buf = (*env)->GetByteArrayElements(env, data, 0);
+	jbyte *buf = (*env)->GetByteArrayElements(env, data, 0);
 
 	FD_ZERO(&fds);
 	FD_SET(fd, &fds);
@@ -99,7 +101,7 @@ JNIEXPORT jint JNICALL Java_javax_comm_DriverGenUnix_read
 		{
 			numRead = -1;
 			fprintf(stderr, "jcomm: select error %d\n",errno);
-			throwMyException(env, "java/io/IOException", (char*)strerror(errno));
+			throwMyException(env, "java/io/IOException", (const char*)strerror(errno));
 			break;
 		}
 		if (rv == 0)
@@ -114,7 +116,7 @@ JNIEXPORT jint JNICALL Java_javax_comm_DriverGenUnix_read
 		if (rv < 0)
 		{
 			fprintf(stderr, "jcomm: read error %d\n",errno);
-			throwMyException(env, "java/io/IOException", (char*)strerror(errno));
+			throwMyException(env, "java/io/IOException", (const char*)strerror(errno));
 			numRead = -1;
 			break;
 		}
@@ -131,7 +133,7 @@ JNIEXPORT jint JNICALL Java_javax_comm_DriverGenUnix_read
 JNIEXPORT void JNICALL Java_javax_comm_DriverGenUnix_write
   (JNIEnv *env, jobject obj, jint fd, jbyteArray data, jint off, jint len)
 {
-	char *buf;
+	jbyte *buf;
 	int wrote;
 	int retry = 1000;
 	buf = (*env)->GetByteArrayElements(env, data, 0);
@@ -181,7 +183,7 @@ JNIEXPORT jint JNICALL Java_javax_comm_DriverGenUnix_00024Serial_open
 	fd = open (port, O_RDWR | O_NOCTTY | O_NONBLOCK);
 	if (fd < 0)
 	{
-		throwMyException(env, "java/io/IOException", (char*)strerror(errno));
+		throwMyException(env, "java/io/IOException", (const char*)strerror(errno));
 		return -1;
 	}
 	tcgetattr (fd, &tio);
@@ -196,7 +198,7 @@ JNIEXPORT jint JNICALL Java_javax_comm_DriverGenUnix_00024Serial_open
 	tcflush (fd, TCIOFLUSH);
 	if (tcsetattr (fd, TCSANOW, &tio) == -1)
 	{
-		throwMyException(env, "java/io/IOException", (char*)strerror(errno));
+		throwMyException(env, "java/io/IOException", (const char*)strerror(errno));
 	}
 	(*env)->ReleaseStringUTFChars(env, portName, port);
 	return fd;
@@ -355,22 +357,22 @@ JNIEXPORT jint JNICALL Java_javax_comm_DriverGenUnix_00024Serial_getParity
 	{
 		if (tio.c_iflag & IGNPAR)
 		{
-			return jcomm_DriverGenUnix_Serial_PARITY_SPACE; 
+			return jcomm_DriverGenUnix_Serial_PARITY_SPACE;
 		}
 		else
 		{
-			return jcomm_DriverGenUnix_Serial_PARITY_MARK; 
+			return jcomm_DriverGenUnix_Serial_PARITY_MARK;
 		}
 	}
 	if (tio.c_cflag & PARENB)
 	{
 		if (tio.c_cflag & PARODD)
 		{
-			return jcomm_DriverGenUnix_Serial_PARITY_ODD; 
+			return jcomm_DriverGenUnix_Serial_PARITY_ODD;
 		}
 		else
 		{
-			return jcomm_DriverGenUnix_Serial_PARITY_EVEN; 
+			return jcomm_DriverGenUnix_Serial_PARITY_EVEN;
 		}
 	}
 	return jcomm_DriverGenUnix_Serial_PARITY_NONE;
@@ -496,7 +498,7 @@ JNIEXPORT void JNICALL Java_javax_comm_DriverGenUnix_00024Serial_setSerialPortPa
 			throwMyException(env, "javax/comm/UnsupportedCommOperation",
 				"Invalid Data Bits");
 			return;
-			
+
 	}
 	// set parity
 	if (par & jcomm_DriverGenUnix_Serial_PARITY_SPACE)
@@ -530,7 +532,7 @@ JNIEXPORT void JNICALL Java_javax_comm_DriverGenUnix_00024Serial_setSerialPortPa
 	// commit
 	if (tcsetattr (fd, TCSANOW, &tio) == -1)
 	{
-		throwMyException(env, "java/io/IOException", (char*)strerror(errno));
+		throwMyException(env, "java/io/IOException", (const char*)strerror(errno));
 	}
 }
 
