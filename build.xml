@@ -123,7 +123,7 @@
         <exclude name="**/.*" />
       </fileset>
     </jar>
-	<signjar jar="${build.jar}" alias="mykey" keystore="/Users/stewart/.keystore" storepass="blackDOG" />
+	<signjar jar="${build.jar}" alias="mykey" keystore="${keystore}" storepass="${keypass}" />
   </target>
 
   <!-- check of gcj.lib is out of date -->
@@ -289,7 +289,7 @@
         <include name="**/*.jnilib" />
       </fileset>
     </jar>
-	<signjar jar="${dir.jars}/libs.jar" alias="mykey" keystore="/Users/stewart/.keystore" storepass="blackDOG" />
+	<signjar jar="${dir.jars}/libs.jar" alias="mykey" keystore="${keystore}" storepass="${keypass}" />
   </target>
 
   <target name="release-test">
