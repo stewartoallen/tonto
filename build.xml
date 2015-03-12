@@ -2,7 +2,7 @@
 
 <project name="tonto" default="all">
 
-  <property name="doc.pkgs" value="com.neuron.app.tonto" />
+  <property name="doc.pkgs" value="com.neuron.*" />
   <property name="libclean" value="dummy" />
   <property name="merge" value="merge" />
 
