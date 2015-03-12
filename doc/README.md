@@ -1,16 +1,13 @@
-Tonto is bound under the terms of the Artistic License. This license is
-included in the file LICENSE.txt in this directory.
+Tonto is bound under the terms of The Clarified Artistic License.
+This license is included in the file LICENSE in the root directory.
 
 A full readme and install notes can be found on the project home page:
 
- http://giantlaser.com/tonto/
+ http://mrallen.com/tonto/
 
 You can reach me at:
 
  stewart@neuron.com
-
-
-Other Notes:
 
 Tonto contains the follow 3rd-party code:
 
